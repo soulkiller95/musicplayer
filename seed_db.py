@@ -26,7 +26,7 @@ def seed_data():
         )
         
         # Update images even if already exists to ensure quality
-        img_path = os.path.join('media', img_filename)
+        img_path = os.path.join('static', 'media', img_filename)
         if os.path.exists(img_path):
             with open(img_path, 'rb') as f:
                 song.song_img.save(f'track_img_{i}.png', ContentFile(f.read()), save=False)
