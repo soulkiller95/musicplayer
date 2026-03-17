@@ -15,7 +15,9 @@ def index(request):
         recent_songs_unsorted = Song.objects.filter(id__in=recent_id,recent__user=request.user)
         recent_songs = list()
         for id in recent_id:
-            recent_songs.append(recent_songs_unsorted.get(id=id))
+            s = recent_songs_unsorted.filter(id=id).first()
+            if s:
+                recent_songs.append(s)
     else:
         recent = None
         recent_songs = None
@@ -206,7 +208,9 @@ def recent(request):
         recent_songs_unsorted = Song.objects.filter(id__in=recent_id,recent__user=request.user)
         recent_songs = list()
         for id in recent_id:
-            recent_songs.append(recent_songs_unsorted.get(id=id))
+            s = recent_songs_unsorted.filter(id=id).first()
+            if s:
+                recent_songs.append(s)
     else:
         recent_songs = None
 
