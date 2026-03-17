@@ -32,4 +32,3 @@ if settings.DEBUG:
     # During local development, these can also be used
     urlpatterns += static(settings.STATIC_URL, document_root=os.path.join(settings.BASE_DIR, 'static'))
     urlpatterns += static(settings.MEDIA_URL, document_root=os.path.join(settings.BASE_DIR, 'static', 'media'))
-```
