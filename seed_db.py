@@ -8,6 +8,8 @@ from musicapp.models import Song
 from django.core.files.base import ContentFile
 
 def seed_data():
+    print("Clearing old data...")
+    Song.objects.all().delete()
     print("Seeding database with high-quality placeholder data...")
     for i in range(1, 10):
         # Rotate through the 3 placeholder images

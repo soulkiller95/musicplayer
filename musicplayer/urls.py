@@ -24,10 +24,12 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),  # for all-auth
     path('', include('musicapp.urls')),
     path('authentication/', include('authentication.urls')),
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': os.path.join(settings.BASE_DIR, 'static')}),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': os.path.join(settings.BASE_DIR, 'static', 'media')}),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # During local development, these can also be used
+    urlpatterns += static(settings.STATIC_URL, document_root=os.path.join(settings.BASE_DIR, 'static'))
+    urlpatterns += static(settings.MEDIA_URL, document_root=os.path.join(settings.BASE_DIR, 'static', 'media'))
+```
